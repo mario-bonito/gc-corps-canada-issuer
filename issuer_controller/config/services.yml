@@ -20,7 +20,7 @@ issuers:
 
     credential_types:
       - schema: registration.registries.ca
-        issuer_url: $APPLICATION_URL_INCORP
+        issuer_url: $APPLICATION_URL_INCORP/
         description: TODO
         details:
           label_en: Registration
@@ -163,7 +163,7 @@ issuers:
                 from: claim
 
       - schema: relationship.registries.ca
-        issuer_url: $APPLICATION_URL_DBA
+        issuer_url: $APPLICATION_URL_DBA/
         description: TODO
         details:
           label_en: Relationship
@@ -254,7 +254,7 @@ issuers:
                 from: claim
 
       - schema: address.registries.ca
-        issuer_url: $APPLICATION_URL_ADDRESS
+        issuer_url: $APPLICATION_URL_ADDRESS/
         description: TODO
         details:
           label_en: Corporate Address
@@ -312,7 +312,7 @@ issuers:
                 from: claim
 
       - schema: demo.business_number.registries.ca
-        issuer_url: $APPLICATION_URL_ADDRESS
+        issuer_url: $APPLICATION_URL_ADDRESS/
         description: TODO
         details:
           label_en: Corporate Business Number
@@ -344,7 +344,7 @@ issuers:
                 from: claim
 
       - schema: demo.verified_person.registries.ca
-        issuer_url: $APPLICATION_URL_ADDRESS
+        issuer_url: $APPLICATION_URL_ADDRESS/
         description: TODO
         details:
           label_en: Verified Person
@@ -422,7 +422,7 @@ issuers:
                 from: claim
 
       - schema: demo.person_relationship.registries.ca
-        issuer_url: $APPLICATION_URL_DBA
+        issuer_url: $APPLICATION_URL_DBA/
         description: TODO
         details:
           label_en: Relationship
@@ -513,7 +513,7 @@ issuers:
                 from: claim
 
       - schema: demo.org_relationship.registries.ca
-        issuer_url: $APPLICATION_URL_DBA
+        issuer_url: $APPLICATION_URL_DBA/
         description: TODO
         details:
           label_en: Relationship
