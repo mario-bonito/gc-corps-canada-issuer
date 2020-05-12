@@ -16,7 +16,7 @@
             "postal_code": "$Text",
             "province": "$Text",
             "registered_jurisdiction": "$Text",
-            "incorporation_date": "$Date"
+            "registration_date": "$Date"
         },
         "schema": "my-registration.gc",
         "version": "1.0.0"

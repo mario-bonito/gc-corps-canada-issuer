@@ -1,15 +1,24 @@
 default:
-  APPLICATION_URL_VONX: $APPLICATION_URL/my-organization/my-permit
+  APPLICATION_URL_INCORP: $APPLICATION_URL/corporations-canada/incorporation
+  APPLICATION_URL_DBA: $APPLICATION_URL/corporations-canada/dba
+  APPLICATION_URL_VPERSON: $APPLICATION_URL/corporations-canada/verified-person
+  APPLICATION_URL_ADDRESS: $APPLICATION_URL/corporations-canada/address
+  APPLICATION_URL_BUSINESS_NUMBER: $APPLICATION_URL/corporations-canada/bn
+  APPLICATION_URL_VONX: $APPLICATION_URL/gc/article-of-incorporation
   TEMPLATE_PATH: ../templates
 
-  TOB_API_URL: TOBAPIURL
-  TOB_APP_URL: TOBAPPURL
+  TOB_API_URL: http://vcr-api:8080/api/v2
+  TOB_APP_URL: http://localhost:8080
 
-  WALLET_SEED_VONX: my-organization_0000000000000000
+  WALLET_SEED_VONX: gc_00000000000000000000000000000
 
-  INDY_GENESIS_URL: GENESISURL
+  #INDY_GENESIS_URL: http://localhost:9000/genesis
 
   LEDGER_PROTOCOL_VERSION: "1.6"
   AUTO_REGISTER_DID: false
-
+# ./von-network/manage up
+# ./indy-catalyst/docker/manage up DJANGO_LOG_LEVEL=DEBUG
+# ./gc-corps-canada-issuer/docker/manage up DEBUG=false
+# ./indy-catalyst/docker/manage build web THEME=goc THEME_PATH=/Users/masterbee/Desktop/my.anvil/goc/von/indy-catalyst/client/themes
+# ./indy-catalyst/docker/manage web-dev THEME=goc THEME_PATH_DEV=/Users/masterbee/Desktop/my.anvil/goc/von/indy-catalyst/client/themes/goc DEBUG=true
 ### eof ###

@@ -257,8 +257,8 @@ The `credential_types` structure is repeated for each credential issued by the a
 - `topic` is the mechanism to link a credential to its subject entity (see notes at the start of this section about "subject entities"). The mapping indicates the claim from which to map the data, and the name used by this instance of OrgBook, in this case `registration`.
   - Each instance of OrgBook could use a different name for the topic of the subject entity, and there could be multiple `topic` types in a single OrgBook instance.
 - `cardinality_fields` is a list of attributes from the credential that are combined with the `topic` to define the cardinality (unique key) of the credential. See the notes at the start of this section about cardinality.
-  - An example of the use of cardinality can be [seen here](https://github.com/bcgov/von-bc-registries-agent/blob/686c82c4274b2b2dca7f12922ecb947491665822/bcreg-x/config/services.yml#L228). In this example, the cardinality is on the topic (attribute `registration_id`) and the `address_type` attribute. Example:
-    - If two credentials were issued for the same organization (same `registration_id`) and both had `Headquarters` as the `address_type` value, OrgBook would assume the latter was a reissued credential and would deactivate the earlier one, keeping it for historical purposes.
+  - An example of the use of cardinality can be [seen here](https://github.com/bcgov/von-bc-registries-agent/blob/686c82c4274b2b2dca7f12922ecb947491665822/bcreg-x/config/services.yml#L228). In this example, the cardinality is on the topic (attribute `corporation_id`) and the `address_type` attribute. Example:
+    - If two credentials were issued for the same organization (same `corporation_id`) and both had `Headquarters` as the `address_type` value, OrgBook would assume the latter was a reissued credential and would deactivate the earlier one, keeping it for historical purposes.
     - However, if one credential had an `address_type` of `Headquarters` and the other `Mailing`, both credentials would be considered `active`.
 
 The final section of the `credential_types` structure are the mappings, an example of which follows below.
