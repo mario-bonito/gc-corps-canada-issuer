@@ -1,171 +1,660 @@
-# Documentation: https://github.com/bcgov/von-agent-template/tree/master/von-x-agent/config
-
-- name: my-registration.my-organization
-  version: 1.0.0
-  description: The my-registration credential issued by my-organization
+- name: registration.cc.orgbook.canada.ca
+  version: '1.0.1'
+  description: TODO
   attributes:
-    corp_num:
-      description_en: Registration/Incorporation Number or Identifying Number
-      label_en: Registration ID
-      data_type: helper_uuid
+    # --- ID -- #
+    registration_id:
+      label_en: Corporation Number
+      label_fr: Dénomination sociale
+      description_en: A corporation number is the number Corporations Canada (CC) assigns to a federal body corporate when it first comes under CC's jurisdiction; e.g., on incorporation, amalgamation or continuance. It is usually a 7-digit number.
+      description_fr: Un numéro de société/d'organisation est le numéro assigné à une personne morale de régime fédéral par Corporations Canada au moment de sa constititution lorsqu'elle est constituée en vertu d'une loi sous notre responsabilité; par ex., au moment de la constitution, de la fusion ou de la prorogation. Il s'agit d'un numéro de 7 chiffres.
       required: true
+    # --- DATA -- #
     registration_date:
-      description_en: Date of Registration, Incorporation, Continuation or Amalgamation
-      label_en: Registration Date
-      data_type: ui_date
+      label_en: Date issued
+      label_fr: Date d'émission
+      description_en: Date of Incorporation, Continuation or Amalgamation
+      description_fr: Date de constitution, de continuation ou de fusion
+      required: false
+    registration_expiry_date:
+      label_en: Expiration date
+      label_fr: Date d'expiration
+      description_en: Date it will expire (unless extended)
+      description_fr:
+      required: false
+    registration_renewal_effective:
+      label_en: Renewal date
+      label_fr: Date de renouvellement
+      description_en: Date the renewal becomes effective
+      description_fr: Date d'entrée en vigueur du renouvellement
       required: false
     entity_name:
-      description_en: The legal name of entity
-      label_en: Name
-      data_type: ui_name
+      label_en: Corporate Name
+      label_fr: Dénomination sociale
+      description_en: This field displays the legal name of a federal body corporate.
+      description_fr: Ce champ affiche le nom légal d'une personne morale de régime fédéral.
       required: true
     entity_name_effective:
-      description_en: Date current name became effective
-      label_en: Name Effective Date
-      data_type: ui_date
+      label_en: Date effective
+      label_fr: Date d'entrée en vigueur
+      description_en: Date current corporate name became effective
+      description_fr: Date d'entrée en vigueur du dénomination sociale
       required: true
-    addressee:
-      description: addressee
-      data_type: ui_text
-      required: true
-    address_line_1:
-      description: address_line_1
-      data_type: ui_text
-      required: true
-    city:
-      description: city
-      data_type: ui_text
-      required: true
-    province:
-      description: province
-      data_type: ui_text
-      required: true
-    postal_code:
-      description: postal_code
-      data_type: ui_text
-      required: true
-    country:
-      description: country
-      data_type: ui_text
-      required: true
+    # entity_name_assumed:
+    #   label_en: Corporate Assumed Name
+    #   label_fr: Nom de entreprise
+    #   description_en: A legal name used by an extraprovincial company when the home jurisdiction name is not available
+    #   description_fr: Un nom légal utilisé par une entreprise extraprovinciale lorsque le nom de la origine nest pas disponible
+    #   required: false
+    # entity_name_assumed_effective:
+    #   label_en: Effective Date of Assumed Name
+    #   label_fr: Date d'entrée en vigueur du nom de l'entreprise
+    #   description_en: Date assumed name became effective
+    #   description_fr: Date d'entrée en vigueur du nom de l'entreprise
+    #   required: false
+    # entity_name_trans:
+    #   label_en: Translated Name
+    #   description_en: Entity name translated into another language      required: false
+    # entity_name_trans_effective:
+    #   label_en: Translated Name Effective Date
+    #   description_en: Date translated name became effective
+    #   required: false
     entity_status:
+      label_en: Status
+      label_fr: Statut
       description_en: Status of the entity (active or historical)
-      label_en: Registration Status
-      data_type: ui_select
+      description_fr: Statut de l'entité (active ou historique)
+      required: true
+    entity_status_code:
+      label_en: Status
+      label_fr: Statut
+      description_en: Status of the entity (active or historical)
+      description_fr: Statut de l'entité (active ou historique)
       required: true
     entity_status_effective:
+      label_en: Date effective
+      label_fr: Date d'entrée en vigueur
       description_en: Date status became effective
-      label_en: Status Effective Date
-      data_type: ui_date
+      description_fr: Date d'entrée en vigueur du statut
       required: true
     entity_type:
-      description_en: Type of entity incorporated or registered
-      label_en: Registration Type
-      data_type: ui_text
+      label_en: Incorporation Type
+      label_fr: Type d'incorporation
+      description_en: Code for the type of entity incorporated
+      description_fr: Code pour la type d'entité constituée
       required: true
+    # entity_type_description:
+    #   label_en: Entity Type
+    #   label_fr: Type d'entité
+    #   description_en: Type of entity incorporated
+    #   description_fr: Type d'entité constituée
+    #   required: true
+    business_number:
+      label_en: Business Number
+      label_fr: Numéro d’entreprise (NE)
+      description_en: The Business Number (BN) is part of a unique federal government numbering system that identifies a body corporate and the accounts it maintains with the Canada Revenue Agency (CRA). It is composed of a 9-digit registration number that identifies the body corporate and a 6-character account identifier. The BN is assigned by CRA.
+      description_fr: Le numéro d'entreprise (NE) fait partie d'un système unique de numérotation du gouvernement fédéral qui identifie une personne morale et les comptes qu'elle a avec l'Agence du revenu du Canada (ARC). Il est composé d'un numéro d'enregistrement de 9 chiffres qui identifie la personne morale et d'un identificateur de compte de 6 caractères. Il est assigné par l'ARC.
+      required: true
+    directors_min:
+      label_en: Minimum Directors
+      label_fr: Minimal d'administrateurs
+      description_en: The Business Number (BN) is part of a unique federal government numbering system that identifies a body corporate and the accounts it maintains with the Canada Revenue Agency (CRA). It is composed of a 9-digit registration number that identifies the body corporate and a 6-character account identifier. The BN is assigned by CRA.
+      description_fr: Le numéro d'entreprise (NE) fait partie d'un système unique de numérotation du gouvernement fédéral qui identifie une personne morale et les comptes qu'elle a avec l'Agence du revenu du Canada (ARC). Il est composé d'un numéro d'enregistrement de 9 chiffres qui identifie la personne morale et d'un identificateur de compte de 6 caractères. Il est assigné par l'ARC.
+      required: true
+    directors_max:
+      label_en: Maximum Directors
+      label_fr: maximal d'administrateurs
+      description_en: Directors are the individuals that supervise the management of the federal body corporate.
+      description_fr: Les administrateurs sont les personnes qui surveillent la gestion d'une personne morale de régime fédéral.
+      required: true
+    legislation:
+      label_en: Governing Legislation
+      label_fr: Régime législatif
+      description_en: Governing legislation is the act under which a federal body corporate currently exists. The date that appears beside the governing legislation is the date on which the federal body corporate first came under this act. It is not necessarily the date that the federal body corporate was originally created because a body corporate can be created under one act and then continued into another act.
+      description_fr: La loi applicable est la loi en vertu de laquelle une personne morale de régime fédéral existe actuellement. La date qui apparaît à côté de la loi applicable est la date à laquelle la personne morale de régime fédéral a d'abord été constituée en vertu de cette loi. Ce n'est pas nécessairement la date à laquelle la personne morale de régime fédéral a d'abord été créée étant donné qu'une personne morale peut être créée en vertu d'une loi et ensuite être prorogée en vertu d'une autre loi.
+      required: true
+    # registered_jurisdiction:
+    #   label_en: Registered Jurisdiction
+    #   description_en: The jurisdiction an entity was created in
+    #   required: false
+    # extra_jurisdictional_registration:
+    #   label_en: Extra-Jurisdictional Registration
+    #   description_en: Flag to indicate extra-jurisdictional registrations
+    #   required: false
     registered_jurisdiction:
-      description_en: The jurisdiction an entity was created in
-      label_en: Registered Jurisdiction
-      data_type: ui_text
-      required: false
+      label_en: Registered Office's Location
+      label_fr: Emplacement du siège social
+      description_en: Province or territory the registered office is located
+      description_fr: Province ou territoire où se trouve le siège social
+      required: true
+    # -- ADDRESS --- #
+    address_type:
+      label_en: Address Type
+      label_fr: Type d'adresse
+      description_en: Type designator for this address
+      description_fr: Désignation du type pour cette adresse
+      required: true
+    civic_address:
+      label_en: Civic Address
+      label_fr: Adresse civique
+      description_en: Street number, name, direction, suite, etc.
+      description_fr: Numéro de rue, nom, direction, suite, etc.
+      required: true
+    municipality:
+      label_en: Municipality
+      label_fr: Municipalité
+      description_en: Name of a recognized municipality
+      description_fr: Nom d'une municipalité reconnue
+      required: true
+    province:
+      label_en: Province
+      label_fr: Province
+      description_en: Name of a Canadian province or territory
+      description_fr: Nom d'une province ou d'un territoire canadien
+      required: true
+    postal_code:
+      label_en: Postal Code
+      label_fr: Code postal
+      description_en: Identifier issued by postal agency
+      description_fr: Identifiant donné par l'agence postale
+      required: true
+    country:
+      label_en: Country
+      label_fr: Pays
+      description_en: Name of the country
+      description_fr: Nom du pays
+      required: true
+    # -- TIMESTAMPS -- #
     effective_date:
-      description_en: Date Credential is effective
       label_en: Credential Effective Date
-      data_type: ui_date
+      label_fr: Date d'entrée en vigueur d'identité numériques
+      description_en: Date Credential is effective
+      description_fr: Date d'identité numériques sont en vigueur
       required: true
     expiry_date:
-      description_en: Date Credential expired
       label_en: Credential Expiry Date
-      data_type: ui_date
-      required: false
-- name: my-relationship.my-organization
-  version: 1.0.0
-  description: The relationship between two organizations
-  attributes:
-    corp_num:
-      description_en: Unique identifer assigned to entity by registrar
-      label_en: Registration ID
-      data_type: ui_text
+      label_fr: Date d'expiration d'identité numériques
+      description_en: The date the credential expires
+      description_fr: La date d'expiration d'identité numériques
       required: true
-    associated_corp_num:
-      description_en: Registry id(s) of associated organizations/individuals
+# =====================================================================
+#  BUSINESS NUMBER
+# =====================================================================
+- name: business_number.cra.orgbook.canada.ca
+  version: '1.0.1'
+  description: TODO
+  cardinality:
+    - business_number
+  attributes:
+    # --- ID -- #
+    registration_id:
+      label_en: Relationship ID
+      label_fr: Identifiant de la relation
+      description_en: Unique identifer assigned to entity by registrar
+      description_fr: Identifiant unique attribué à l'entité par le registraire
+      required: true
+    # --- DATA -- #
+    business_number:
+      label_en: Business Number
+      label_fr: Numéro d’entreprise (NE)
+      description_en: The Business Number (BN) is part of a unique federal government numbering system that identifies a body corporate and the accounts it maintains with the Canada Revenue Agency (CRA). It is composed of a 9-digit registration number that identifies the body corporate and a 6-character account identifier. The BN is assigned by CRA.
+      description_fr: Le numéro d'entreprise (NE) fait partie d'un système unique de numérotation du gouvernement fédéral qui identifie une personne morale et les comptes qu'elle a avec l'Agence du revenu du Canada (ARC). Il est composé d'un numéro d'enregistrement de 9 chiffres qui identifie la personne morale et d'un identificateur de compte de 6 caractères. Il est assigné par l'ARC.
+      required: true
+    # -- TIMESTAMPS -- #
+    effective_date:
+      label_en: Credential Effective Date
+      label_fr: Date d'entrée en vigueur d'identité numériques
+      description_en: Date Credential is effective
+      description_fr: Date d'identité numériques sont en vigueur
+      required: true
+    expiry_date:
+      label_en: Credential Expiry Date
+      label_fr: Date d'expiration d'identité numériques
+      description_en: The date the credential expires
+      description_fr: La date d'expiration d'identité numériques
+      required: true
+# =====================================================================
+#  ORGANIZATION ADDRESS
+# =====================================================================
+- name: organization.address.cc.orgbook.canada.ca
+  version: '1.0.1'
+  description: TODO
+  attributes:
+    # --- ID -- #
+    registration_id:
+      label_en: Relationship ID
+      label_fr: Identifiant de la relation
+      description_en: Unique identifer assigned to entity by registrar
+      description_fr: Identifiant unique attribué à l'entité par le registraire
+      required: true
+    # --- DATA -- #
+    addressee:
+      label_en: Addressee
+      label_fr: Destinataire
+      description_en: Legal and principle name assigned to entity by registrar
+      description_fr: Nom légal et principal attribué à l'entité par le registraire
+      required: true
+    address_type:
+      label_en: Address Type
+      label_fr: Type d'adresse
+      description_en: Type designator for this address
+      description_fr: Désignation du type pour cette adresse
+      required: true
+    civic_address:
+      label_en: Civic Address
+      label_fr: Adresse civique
+      description_en: Street number, name, direction, suite, etc.
+      description_fr: Numéro de rue, nom, direction, suite, etc.
+      required: true
+    municipality:
+      label_en: Municipality
+      label_fr: Municipalité
+      description_en: Name of a recognized municipality
+      description_fr: Nom d'une municipalité reconnue
+      required: true
+    province:
+      label_en: Province
+      label_fr: Province
+      description_en: Name of a Canadian province or territory
+      description_fr: Nom d'une province ou d'un territoire canadien
+      required: true
+    postal_code:
+      label_en: Postal Code
+      label_fr: Code postal
+      description_en: Identifier issued by postal agency
+      description_fr: Identifiant donné par l'agence postale
+      required: true
+    country:
+      label_en: Country
+      label_fr: Pays
+      description_en: Name of the country
+      description_fr: Nom du pays
+      required: true
+    address_effective_date:
+      label_en: Address Effective Date
+      label_fr: Date d'entrée en vigueur d'adresse
+      description_en: Date address is effective
+      description_fr: Date d'entrée en vigueur de l'adresse
+      required: false
+    # -- TIMESTAMPS -- #
+    effective_date:
+      label_en: Credential Effective Date
+      label_fr: Date d'entrée en vigueur d'identité numériques
+      description_en: Date Credential is effective
+      description_fr: Date d'identité numériques sont en vigueur
+      required: true
+    expiry_date:
+      label_en: Credential Expiry Date
+      label_fr: Date d'expiration d'identité numériques
+      description_en: The date the credential expires
+      description_fr: La date d'expiration d'identité numériques
+      required: true
+# =====================================================================
+#  PERSON ADDRESS
+# =====================================================================
+- name: person.address.cc.orgbook.canada.ca
+  version: '1.0.1'
+  description: TODO
+  attributes:
+    # --- ID -- #
+    registration_id:
+      label_en: Relationship ID
+      label_fr: Identifiant de la relation
+      description_en: Unique identifer assigned to entity by registrar
+      description_fr: Identifiant unique attribué à l'entité par le registraire
+      required: true
+    # --- DATA -- #
+    addressee:
+      label_en: Addressee
+      label_fr: Destinataire
+      description_en: Legal and principle name assigned to entity by registrar
+      description_fr: Nom légal et principal attribué à l'entité par le registraire
+      required: true
+    address_type:
+      label_en: Address Type
+      label_fr: Type d'adresse
+      description_en: Type designator for this address
+      description_fr: Désignation du type pour cette adresse
+      required: true
+    civic_address:
+      label_en: Civic Address
+      label_fr: Adresse civique
+      description_en: Street number, name, direction, suite, etc.
+      description_fr: Numéro de rue, nom, direction, suite, etc.
+      required: true
+    municipality:
+      label_en: Municipality
+      label_fr: Municipalité
+      description_en: Name of a recognized municipality
+      description_fr: Nom d'une municipalité reconnue
+      required: true
+    province:
+      label_en: Province
+      label_fr: Province
+      description_en: Name of a Canadian province or territory
+      description_fr: Nom d'une province ou d'un territoire canadien
+      required: true
+    postal_code:
+      label_en: Postal Code
+      label_fr: Code postal
+      description_en: Identifier issued by postal agency
+      description_fr: Identifiant donné par l'agence postale
+      required: true
+    country:
+      label_en: Country
+      label_fr: Pays
+      description_en: Name of the country
+      description_fr: Nom du pays
+      required: true
+    address_effective_date:
+      label_en: Address Effective Date
+      label_fr: Date d'entrée en vigueur d'adresse
+      description_en: Date address is effective
+      description_fr: Date d'entrée en vigueur de l'adresse
+      required: false
+    # -- TIMESTAMPS -- #
+    effective_date:
+      label_en: Credential Effective Date
+      label_fr: Date d'entrée en vigueur d'identité numériques
+      description_en: Date Credential is effective
+      description_fr: Date d'identité numériques sont en vigueur
+      required: true
+    expiry_date:
+      label_en: Credential Expiry Date
+      label_fr: Date d'expiration d'identité numériques
+      description_en: The date the credential expires
+      description_fr: La date d'expiration d'identité numériques
+      required: true
+# =====================================================================
+#  PERSON
+# =====================================================================
+- name: verified_person.cc.orgbook.canada.ca
+  version: '1.0.1'
+  description: TODO
+  attributes:
+    # --- ID -- #
+    registration_id:
+      label_en: Relationship ID
+      label_fr: Identifiant de la relation
+      description_en: Unique identifer assigned to entity by registrar
+      description_fr: Identifiant unique attribué à l'entité par le registraire
+      required: true
+    # --- DATA -- #
+    # entity_status:
+    #   label_en: Status
+    #   label_fr: Statut
+    #   description_en: Status of the entity (active or historical)
+    #   description_fr: Statut de l'entité (active ou historique)
+    #   required: true
+    full_name:
+      label_en: Full Name
+      label_fr: Nom complet
+      description_en: Full Name
+      description_fr: Nom complet
+      required: true
+    first_name:
+      label_en: First Name
+      label_fr: Prénom
+      description_en: First Name
+      description_fr: Prénom
+      required: true
+    last_name:
+      label_en: Last Name
+      label_fr: Nom de famille
+      description_en: Last Name
+      description_fr: Nom de famille
+      required: true
+    email_address:
+      label_en: Email Address
+      label_fr: Adresse électronique
+      description_en: Email Address
+      description_fr: Adresse électronique
+      required: true
+    phone_number:
+      label_en: Phone Number
+      label_fr: Numéro de téléphone
+      description_en: Phone Number
+      description_fr: Numéro de téléphone
+      required: true
+    canadian_residency:
+      label_en: Canadian Residency
+      label_fr: Résidence canadienne
+      description_en: Is this person a Canadian resident (yes/no)
+      description_fr: Cette personne est-elle un résident canadien (oui/non)
+      required: true
+    # civic_address:
+    #   label_en: Civic Address
+    #   label_fr: Adresse civique
+    #   description_en: Street number, name, direction, suite, etc.
+    #   description_fr: Numéro de rue, nom, direction, suite, etc.
+    #   required: true
+    # municipality:
+    #   label_en: Municipality
+    #   label_fr: Municipalité
+    #   description_en: Name of a recognized municipality
+    #   description_fr: Nom d'une municipalité reconnue
+    #   required: true
+    # province:
+    #   label_en: Province
+    #   label_fr: Province
+    #   description_en: Name of a Canadian province or territory
+    #   description_fr: Nom d'une province ou d'un territoire canadien
+    #   required: true
+    # postal_code:
+    #   label_en: Postal Code
+    #   label_fr: Code postal
+    #   description_en: Identifier issued by postal agency
+    #   description_fr: Identifiant donné par l'agence postale
+    #   required: true
+    # country:
+    #   label_en: Country
+    #   label_fr: Pays
+    #   description_en: Name of the country
+    #   description_fr: Nom du pays
+    #   required: true
+    # -- TIMESTAMPS -- #
+    effective_date:
+      label_en: Credential Effective Date
+      label_fr: Date d'entrée en vigueur d'identité numériques
+      description_en: Date Credential is effective
+      description_fr: Date d'identité numériques sont en vigueur
+      required: true
+    expiry_date:
+      label_en: Credential Expiry Date
+      label_fr: Date d'expiration d'identité numériques
+      description_en: The date the credential expires
+      description_fr: La date d'expiration d'identité numériques
+      required: true
+# =====================================================================
+#  RELATIONSHIPS
+#  @Notes: Due to UI Bug in Orgbook there is a need to create 2 extra
+#   credentials inorder for the UI to be able to display the Director/Delegate/Admin
+# =====================================================================
+- name: relationship.cc.orgbook.canada.ca
+  version: '1.0.1'
+  description: TODO
+  attributes:
+    # --- ID -- #
+    registration_id:
+      label_en: Relationship ID
+      label_fr: Identifiant de la relation
+      description_en: Unique identifer assigned to entity by registrar
+      description_fr: Identifiant unique attribué à l'entité par le registraire
+      required: true
+    # --- DATA -- #
+    associated_registration_id:
       label_en: Associated Registration ID
-      data_type: ui_text
+      label_fr: Identifiant de relation associé
+      description_en: Unique identifer(s) of associated organizations/individuals
+      description_fr: Identifiant(s) unique(s) des organisations / individus associés
       required: true
     associated_registration_name:
-      description_en: Registered name of associated organizations/individuals
-      label_en: Associated Registration Namwe
-      data_type: ui_text
+      label_en: Associated Relationship Name
+      label_fr: Nom de la relation associée
+      description_en: Name of associated organizations/individuals
+      description_fr: Nom des organisations / individus associés
       required: false
     relationship:
-      description_en: Name of the relationship
       label_en: Relationship
-      data_type: ui_text
+      label_fr: Relation
+      description_en: Name of the relationship
+      description_fr: Nom de la relation
       required: true
     relationship_description:
-      description_en: Description of the relationship
       label_en: Relationship Description
-      data_type: ui_text
+      label_fr: Description de la relation
+      description_en: Description of the relationship
+      description_fr: Description de la relation
       required: true
-    relationship_status:
-      description_en: Status of the relationship
-      label_en: Relationship Status
-      data_type: ui_select
-      required: true
-    relationship_status_effective:
-      description_en: Date the relationship became/becomes effective
-      label_en: Relationship Status Effective
-      data_type: ui_date
-      required: false
+    # relationship_status:
+    #   label_en: Relationship Status
+    #   label_fr: Statut de la relation
+    #   description_en: Status of the relationship
+    #   description_fr: Statut de la relation
+    #   required: true
+    # relationship_status_effective:
+    #   label_en: Relationship Status Effective
+    #   label_fr: Date d'entrée en vigueur du statut de la relation
+    #   description_en: Date the relationship is effective
+    #   description_fr: Date à laquelle la relation est en vigueur
+    #   required: false
+    # -- TIMESTAMPS -- #
     effective_date:
+      label_en: Credential Effective Date
+      label_fr: Date d'entrée en vigueur d'identité numériques
       description_en: Date Credential is effective
-      label_en: Effective Date
-      data_type: ui_date
+      description_fr: Date d'identité numériques sont en vigueur
       required: true
     expiry_date:
-      description_en: Date Credential expires
       label_en: Credential Expiry Date
-      data_type: ui_date
-      required: false
-- name: my-permit.my-organization
-  version: 1.0.0
-  description: The my-permit credential issued by my-organization
+      label_fr: Date d'expiration d'identité numériques
+      description_en: The date the credential expires
+      description_fr: La date d'expiration d'identité numériques
+      required: true
+# PERSON TO ORGANIZATION
+# =======================================================
+- name: person_relationship.cc.orgbook.canada.ca
+  version: '1.0.1'
+  description: TODO
   attributes:
-    corp_num:
-      description_en: Registration/Incorporation Number or Identifying Number
-      label_en: Registration ID
-      data_type: ui_text
+    # --- ID -- #
+    registration_id:
+      label_en: Person ID
+      label_fr: Identifiant de personne
+      description_en: Unique identifer assigned to the person by the registrar
+      description_fr: Identifiant unique attribué à la personne par le registraire
       required: true
-    entity_name:
-      description_en: The legal name of entity
-      label_en: Name
-      data_type: ui_name
       required: true
-    permit_id:
-      description_en: Permit Identifying Number
-      label_en: Permit ID
-      data_type: helper_uuid
+    # --- DATA -- #
+    associated_registration_id:
+      label_en: Corporation Number
+      label_fr: Dénomination sociale
+      description_en: A corporation number is the number Corporations Canada (CC) assigns to a federal body corporate when it first comes under CC's jurisdiction; e.g., on incorporation, amalgamation or continuance. It is usually a 7-digit number.
+      description_fr: Un numéro de société/d'organisation est le numéro assigné à une personne morale de régime fédéral par Corporations Canada au moment de sa constititution lorsqu'elle est constituée en vertu d'une loi sous notre responsabilité; par ex., au moment de la constitution, de la fusion ou de la prorogation. Il s'agit d'un numéro de 7 chiffres.
       required: true
-    permit_type:
-      description_en: Status of the permit
-      label_en: Permit Type
-      data_type: ui_select
+    associated_registration_name:
+      label_en: Corporate Name
+      label_fr: Dénomination sociale
+      description_en: This field displays the legal name of a federal body corporate.
+      description_fr: Ce champ affiche le nom légal d'une personne morale de régime fédéral.
       required: true
-    permit_issued_date:
-      description_en: Date Permit is issued
-      label_en: Permit Issued Date
-      data_type: ui_date
+    relationship:
+      label_en: Relationship
+      label_fr: Relation
+      description_en: Name of the relationship
+      description_fr: Nom de la relation
       required: true
-    permit_status:
-      description_en: Status of the permit
-      label_en: Permit Status
-      data_type: ui_select
+    relationship_description:
+      label_en: Relationship Description
+      label_fr: Description de la relation
+      description_en: Description of the relationship
+      description_fr: Description de la relation
       required: true
+    # relationship_status:
+    #   label_en: Relationship Status
+    #   label_fr: Statut de la relation
+    #   description_en: Status of the relationship
+    #   description_fr: Statut de la relation
+    #   required: true
+    # relationship_status_effective:
+    #   label_en: Relationship Status Effective
+    #   label_fr: Date d'entrée en vigueur du statut de la relation
+    #   description_en: Date the relationship is effective
+    #   description_fr: Date à laquelle la relation est en vigueur
+    #   required: false
+    # -- TIMESTAMPS -- #
     effective_date:
-      description_en: Date Credential is effective
       label_en: Credential Effective Date
-      data_type: ui_date
+      label_fr: Date d'entrée en vigueur d'identité numériques
+      description_en: Date Credential is effective
+      description_fr: Date d'identité numériques sont en vigueur
       required: true
-
-### eof ###
-
+    expiry_date:
+      label_en: Credential Expiry Date
+      label_fr: Date d'expiration d'identité numériques
+      description_en: The date the credential expires
+      description_fr: La date d'expiration d'identité numériques
+      required: true
+# ORGANIZARTION TO PERSON
+# =======================================================
+- name: org_relationship.cc.orgbook.canada.ca
+  version: '1.0.1'
+  description: TODO
+  attributes:
+    # --- ID -- #
+    registration_id:
+      label_en: Corporation Number
+      label_fr: Dénomination sociale
+      description_en: A corporation number is the number Corporations Canada (CC) assigns to a federal body corporate when it first comes under CC's jurisdiction; e.g., on incorporation, amalgamation or continuance. It is usually a 7-digit number.
+      description_fr: Un numéro de société/d'organisation est le numéro assigné à une personne morale de régime fédéral par Corporations Canada au moment de sa constititution lorsqu'elle est constituée en vertu d'une loi sous notre responsabilité; par ex., au moment de la constitution, de la fusion ou de la prorogation. Il s'agit d'un numéro de 7 chiffres.
+      required: true
+    # --- DATA -- #
+    associated_registration_id:
+      label_en: Associated Person ID
+      label_fr: Identifiant de personne associée
+      description_en: Unique identifer assigned to the person by the registrar
+      description_fr: Identifiant unique attribué à la personne par le registraire
+      required: true
+    associated_registration_name:
+      label_en: Associated Individual's Full Name
+      label_fr: Nom complet du l'individu associée
+      description_en: Name of associated individual
+      description_fr: Nom des individu associés
+      required: false
+    relationship:
+      label_en: Relationship
+      label_fr: Relation
+      description_en: Name of the relationship
+      description_fr: Nom de la relation
+      required: true
+    relationship_description:
+      label_en: Relationship Description
+      label_fr: Description de la relation
+      description_en: Description of the relationship
+      description_fr: Description de la relation
+      required: true
+    # relationship_status:
+    #   label_en: Relationship Status
+    #   label_fr: Statut de la relation
+    #   description_en: Status of the relationship
+    #   description_fr: Statut de la relation
+    #   required: true
+    # relationship_status_effective:
+    #   label_en: Relationship Status Effective
+    #   label_fr: Date d'entrée en vigueur du statut de la relation
+    #   description_en: Date the relationship is effective
+    #   description_fr: Date à laquelle la relation est en vigueur
+    #   required: false
+    # -- TIMESTAMPS -- #
+    effective_date:
+      label_en: Credential Effective Date
+      label_fr: Date d'entrée en vigueur d'identité numériques
+      description_en: Date Credential is effective
+      description_fr: Date d'identité numériques sont en vigueur
+      required: true
+    expiry_date:
+      label_en: Credential Expiry Date
+      label_fr: Date d'expiration d'identité numériques
+      description_en: The date the credential expires
+      description_fr: La date d'expiration d'identité numériques
+      required: true
